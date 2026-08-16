@@ -20,8 +20,8 @@ public class TestServirCervezaAI {
 
 		double valor = maquina.servirCerveza(100);
 
-		// 7900 - 100 = 7800 ml disponibles
-		assertEquals(7800, maquina.getCantidadActual(), 0.0001);
+		// 7800 - 100 = 7700 ml disponibles
+		assertEquals(7700, maquina.getCantidadActual(), 0.0001);
 
 		// 100 ml * 0.02 = 2 dólares
 		assertEquals(2, valor, 0.0001);
@@ -37,13 +37,13 @@ public class TestServirCervezaAI {
 
 		maquina.llenarMaquina();
 
-		double valor = maquina.servirCerveza(7900);
+		double valor = maquina.servirCerveza(7800);
 
 		// Se sirvió toda la cerveza disponible.
 		assertEquals(0, maquina.getCantidadActual(), 0.0001);
 
-		// 7900 ml * 0.02 = 158 dólares
-		assertEquals(158, valor, 0.0001);
+		// 7800 ml * 0.02 = 156 dólares
+		assertEquals(156, valor, 0.0001);
 	}
 
 
@@ -99,9 +99,9 @@ public class TestServirCervezaAI {
 		double valor = maquina.servirCerveza(200);
 
 		// El segundo constructor establece una capacidad máxima de 10000.
-		// Al llenarla quedan 9900 ml.
-		// Después de servir 200 quedan 9700 ml.
-		assertEquals(9700, maquina.getCantidadActual(), 0.0001);
+		// Al llenarla quedan 9800 ml.
+		// Después de servir 200 quedan 9600 ml.
+		assertEquals(9600, maquina.getCantidadActual(), 0.0001);
 
 		// 200 ml * 0.03 = 6 dólares
 		assertEquals(6, valor, 0.0001);
