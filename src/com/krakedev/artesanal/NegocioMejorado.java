@@ -26,16 +26,16 @@ public class NegocioMejorado {
 	public boolean agregarMaquina(String nombreCerveza, String descripcion, double precioPorml) {
 		String codigo = generarCodigo();
 		Maquina maquinaEncontrada = recuperarMaquina(codigo);
-		
-		if(maquinaEncontrada != null) {
+
+		if (maquinaEncontrada != null) {
 			return false;
 		}
-		
-	    Maquina m1 = new Maquina(nombreCerveza, descripcion, precioPorml, codigo);
 
-	    maquinas.add(m1);
-		
-	    return true;		
+		Maquina m1 = new Maquina(nombreCerveza, descripcion, precioPorml, codigo);
+
+		maquinas.add(m1);
+
+		return true;
 
 	}
 
@@ -57,4 +57,15 @@ public class NegocioMejorado {
 		return null;
 	}
 
+	private ArrayList<Cliente> clientes = new ArrayList<>();
+
+	public void registrarCliente(String nombre, String cedula) {
+		int codigo = 100;
+		Cliente c1 = new Cliente(nombre, cedula);
+		c1.setCodigo(codigo);
+		codigo++;
+		clientes.add(c1);
+		
+		System.out.println("Hay: "+clientes.size());
+	}
 }
