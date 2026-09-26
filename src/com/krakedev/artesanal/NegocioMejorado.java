@@ -5,12 +5,22 @@ import java.util.ArrayList;
 public class NegocioMejorado {
 	ArrayList<Maquina> maquinas;
 	
+	public NegocioMejorado(){
+		maquinas = new ArrayList<Maquina>();
+	}
+	
 	public void setMaquinas (ArrayList<Maquina> maquinas) {
 		this.maquinas = maquinas;
 	}
 	
 	public ArrayList<Maquina> getMaquinas(){
 		return maquinas;
+	}
+	
+	public String generarCodigo() {
+		int numero = (int) (Math.random()*100) + 1;
+		String codigo = "M-" + numero;
+		return codigo;
 	}
 	
 }
