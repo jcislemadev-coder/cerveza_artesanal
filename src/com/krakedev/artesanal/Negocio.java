@@ -40,4 +40,5 @@ public class Negocio {
 		cliente.setTotalConsumido(cliente.getTotalConsumido()+valor);
 	}
 	
+	
 }

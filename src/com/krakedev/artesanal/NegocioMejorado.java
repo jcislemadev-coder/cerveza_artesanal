@@ -65,8 +65,8 @@ public class NegocioMejorado {
 		c1.setCodigo(codigo);
 		clientes.add(c1);
 		codigo++;
-		System.out.println("Codigo: "+ c1.getCodigo());
-		System.out.println("Codigo: "+ c1.getNombre());
+		System.out.println("Codigo: " + c1.getCodigo());
+		System.out.println("Codigo: " + c1.getNombre());
 
 	}
 
@@ -86,17 +86,46 @@ public class NegocioMejorado {
 
 			Cliente c1 = clientes.get(i);
 
-			if (c1.getCodigo() == codigo ) {
-				System.out.println("Codigo: "+ c1.getNombre());
+			if (c1.getCodigo() == codigo) {
+				System.out.println("Codigo: " + c1.getNombre());
 				return c1;
 			}
 		}
 		return null;
 	}
 
-	public void consumirCerveza(int codigoCliente, String codigoMaquina, double cantidad) {
-		Maquina maquinaEncontrada = recuperarMaquina(codigoMaquina);
-		Cliente clienteEncontrado = buscarClienteporCodigo(codigoCliente);
-		double cantidadServida = maquinaEncontrada.servirCerveza(cantidad);
+	public void registrarConsumo(int codigoCliente, double valorConsumido) {
+		Cliente cliente = buscarClienteporCodigo(codigoCliente);
+
+		double totalActual = cliente.getTotalConsumido();
+
+		double nuevoTotal = totalActual + valorConsumido;
+
+		cliente.setTotalConsumido(nuevoTotal);
 	}
+
+	public void consumirCerveza(int codigoCliente, String codigoMaquina, double cantidad) {
+
+		Maquina maquinaEncontrada = recuperarMaquina(codigoMaquina);
+
+		Cliente clienteEncontrado = buscarClienteporCodigo(codigoCliente);
+
+		double cantidadServida = maquinaEncontrada.servirCerveza(cantidad);
+
+		registrarConsumo(codigoCliente, cantidadServida);
+	}
+	public double consultarValorVendido() {
+
+	    double total = 0;
+
+	    for (int i = 0; i < clientes.size(); i++) {
+
+	        Cliente cliente = clientes.get(i);
+
+	        total = total + cliente.getTotalConsumido();
+	    }
+
+	    return total;
+	}
+
 }
