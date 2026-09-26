@@ -62,6 +62,9 @@ public class Maquina {
 		this.precioPorml = precioPorml;
 	}
 
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	public void imprimir() {
 		String mensaje;
 		mensaje = "Nombre de cerveza: " + nombreCerveza + " Descripcion: " + descripcion + ", Precio por ml: "
