@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class NegocioMejorado {
 	ArrayList<Maquina> maquinas;
+	int codigo = 100;
 
 	public NegocioMejorado() {
 		maquinas = new ArrayList<Maquina>();
@@ -60,12 +61,42 @@ public class NegocioMejorado {
 	private ArrayList<Cliente> clientes = new ArrayList<>();
 
 	public void registrarCliente(String nombre, String cedula) {
-		int codigo = 100;
 		Cliente c1 = new Cliente(nombre, cedula);
 		c1.setCodigo(codigo);
-		codigo++;
 		clientes.add(c1);
-		
-		System.out.println("Hay: "+clientes.size());
+		codigo++;
+		System.out.println("Codigo: "+ c1.getCodigo());
+		System.out.println("Codigo: "+ c1.getNombre());
+
+	}
+
+	public Cliente buscarClienteporCedula(String cedula) {
+		for (int i = 0; i < clientes.size(); i++) {
+			Cliente c1 = clientes.get(i);
+
+			if (c1.getCedula().equals(cedula)) {
+				return c1;
+			}
+		}
+		return null;
+	}
+
+	public Cliente buscarClienteporCodigo(int codigo) {
+		for (int i = 0; i < clientes.size(); i++) {
+
+			Cliente c1 = clientes.get(i);
+
+			if (c1.getCodigo() == codigo ) {
+				System.out.println("Codigo: "+ c1.getNombre());
+				return c1;
+			}
+		}
+		return null;
+	}
+
+	public void consumirCerveza(int codigoCliente, String codigoMaquina, double cantidad) {
+		Maquina maquinaEncontrada = recuperarMaquina(codigoMaquina);
+		Cliente clienteEncontrado = buscarClienteporCodigo(codigoCliente);
+		double cantidadServida = maquinaEncontrada.servirCerveza(cantidad);
 	}
 }
