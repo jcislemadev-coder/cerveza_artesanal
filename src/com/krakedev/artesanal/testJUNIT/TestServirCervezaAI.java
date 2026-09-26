@@ -106,4 +106,6 @@ public class TestServirCervezaAI {
 		// 200 ml * 0.03 = 6 dólares
 		assertEquals(6, valor, 0.0001);
 	}
+	
+	
 }
